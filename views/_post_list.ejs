@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/post_comment_section.css">
+<link rel="stylesheet" href="/css/home.css">
+
+    <li id="post-<%= post._id %>" style="list-style-type: none;">
+        <div class="liner">
+            <p>
+                <% if (locals.user && locals.user.id == post.user.id){ %>
+                    <!-- <img src="<%= locals.user.avatar %>" alt="user image" > -->
+                <small>
+                    <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">Delete</a>
+                </small>
+                <% } %>
+        
+                <div>
+                    <div class="leftPart">
+                    <%= post.user.name %>
+                    </div>
+                    <div class="rightPart">
+                        <h2><u><%= post.title %></u></h2>
+                    </div>
+                </div>
+                
+                
+                <%- post.sanitizedHtml %>
+                <br>
+                
+        
+                <!-- CHANGE :: display the likes of this post, if the user is logged in, then show the link to toggle likes, else, just show the count -->
+                <br>
+                    <!-- study about the data attribute -->
+                <small>
+                    <% if (locals.user){ %>
+                        <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                                <%= post.likes.length %> Likes
+                        </a>
+                    <% }else{ %>
+                        <%= post.likes.length %> Likes
+                    <% } %>
+                </small>
+        
+            </p>
+            
+        </div>
+    </li>

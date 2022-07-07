@@ -1,0 +1,71 @@
+<!-- <li id="comment-<%= comment._id %>" style="list-style-type: none;">
+        <p>
+            <% if (locals.user && locals.user.id == comment.user._id){ %>
+            <small>
+                <a class="delete-comment-button" href="/comments/destroy/<%= comment._id %>">Delete</a>
+            </small>
+            <% } %>
+            <%= comment.content %>
+            <br>
+            <small>
+                <%=comment.author%>
+                
+            </small>
+            <small>
+                <% if (locals.user){ %>
+                    <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                            <%= comment.likes.length %> Likes
+                    </a>
+                <% }else{ %>
+                    <%= comment.likes.length %> Likes
+                <% } %>
+            </small>
+
+        </p>    
+
+</li> -->
+<link rel="stylesheet" href="/css/comment_section.css">
+<li id="comment-<%= comment._id %>" style="list-style-type: none;">
+    <div class="container">
+        <div class="row bootstrap snippets bootdeys">
+            <div class="col-md-8 col-sm-12">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        
+                        <div class="panel-body">
+                            <ul class="media-list">
+                                <li class="media">
+                                    <a href="#" class="pull-left">
+                                        <img style="border-radius: 50%;" src="<%=comment.avatar%>" onerror="this.onerror=null;
+                                        this.src='/images/default_profile_img.jpg';"  class="img-circle">
+                                    </a>
+                                    <div class="media-body">
+                                        <strong class="text-success"><%=comment.author%></strong>
+                                        <% if (locals.user && locals.user.id == comment.user._id){ %>
+                                            <small>
+                                                <a class="delete-comment-button" href="/comments/destroy/<%= comment._id %>">Delete</a>
+                                            </small>
+                                        <% } %>
+                                        <p>
+                                            <%= comment.content %>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+        </div>
+        <small>
+            <% if (locals.user){ %>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                        <%= comment.likes.length %> Likes
+                </a>
+            <% }else{ %>
+                <%= comment.likes.length %> Likes
+            <% } %>
+        </small>
+</li>

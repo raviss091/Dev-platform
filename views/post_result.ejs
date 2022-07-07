@@ -1,0 +1,14 @@
+
+<div style="margin-top: 100px;font-size: 20px;">
+    <p>Search results for post on term <strong><%- term%> ...</strong> </p>
+</div>
+
+<div id="posts-list-container">
+    <ul>
+        <% for(post of posts){ %>
+
+            <%- include('_post_list') -%>
+
+        <%} %>
+    </ul>
+</div>

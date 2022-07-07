@@ -1,0 +1,258 @@
+
+
+@import url('http://weloveiconfonts.com/api/?family=entypo|fontawesome');
+/* entypo */
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
+/* fontawesome */
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+@import url('//netdna.bootstrapcdn.com/font-awesome / 4.0.3/css/font-awesome.css');
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+} /* This is used to fix an specific width even when you add padding */
+
+
+.main {
+    margin-top: 4em;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftpane {
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: rosybrown;
+}
+
+.middlepane {
+    width: 70%;
+    height: 100%;
+background-color: #D6E5FA;
+
+}
+
+.rightpane {
+    width: 30%;
+    position: relative;
+background-color: #DADDFC;
+
+
+}
+
+#feed-posts {
+    box-shadow: rgb(0 0 0 / 20%) 10px 10px 10px;
+    height: 600px;
+    display: flex;
+    width: fit-content;
+    border-radius: 25px;
+
+}
+
+.container1 {
+    background-color: #ffffff;
+}
+
+.left-container {
+    margin: 4rem 15rem 4rem 4rem;
+}
+
+.side {
+    width: 100px;
+    float: left;
+    height: 600px;
+}
+
+.bar {
+    background-color: #2e3641;
+    text-align: center;
+}
+.newPostContent {
+    float: left;
+    padding-left: 40px;
+    padding-top: 70px;
+    width: 100%;
+    min-width: 800px;
+    
+}
+
+/* form {
+    width: 500px;
+} */
+
+.h1 {
+    font-family: sans-serif;
+    font-size: 27px;
+    font-weight: 900;
+    color: #2e3641;
+    margin: 0 0 10px;
+}
+
+.text {
+    border: solid 1px #dae4eb;
+    margin: 20px 0 0 20px;
+    padding-left: 10px;
+}
+
+.text:focus {
+    outline: none;
+    border: 2px solid black;
+}
+
+
+.text::-webkit-input-placeholder {
+    color: #dae4eb;
+    font-weight: bold;
+}
+
+
+#post-title {
+    width: 93%;
+    height: 45px;
+    margin: 0 0 20px 0;
+    padding-left: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.format-bar {
+    height: 45px;
+    width: 93%;
+    border-radius: 25px;
+
+}
+
+.post-body {
+    width: 93%;
+    height: 290px;
+    color: black;
+    margin: 0 0 20px;
+    border-radius: 25px;
+}
+
+.textarea {
+    border-color: #dae4eb;
+    color: #0b0d0e;
+}
+
+.a1 {
+    text-decoration: none;
+    color: #9eb2c0;
+}
+
+.a1:hover {
+    text-decoration: underline;
+}
+
+.btn1 {
+    display: inline-block;
+    line-height: 35px;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2e3641;
+    text-align: center;
+    -webkit-transition: background 0.5s ease-out;
+    -moz-transition: background 0.5s ease-out;
+    -o-transition: background 0.5s ease-out;
+    -ms-transition: background 0.5s ease-out;
+    transition: background 0.5s ease-out;
+    cursor: pointer;
+    background: #f857a8;
+    margin-left: 445px;
+
+    /* background: -webkit-linear-gradient(45deg, #f857a8, #85F4FF);
+    background: linear-gradient(45deg, #f857a8, #85F4FF); */
+}
+
+.guide {
+    text-decoration: none;
+    background-color: #85F4FF ;
+    color: #fff;
+    padding: 15px 15px;
+    font-size: 15px;
+    font-family: sans-serif;
+    border: 3px solid;
+}
+
+.btn1:hover {
+    text-decoration: none;
+    color: #2e3641;
+    background: #85F4FF;
+    /* background: -webkit-linear-gradient(45deg, #85F4FF, #f857a8);
+    background: linear-gradient(45deg, #85F4FF, #f857a8); */
+}
+
+.newPostContent .btn1 {
+    width: 120px;
+    line-height: 45px;
+}
+
+
+
+
+
+/* .toppane {
+  width: 100%;
+  height: 100px;
+  border-collapse: collapse;
+  background-color: #4da6ff;
+} */
+
+/* home friends css */
+
+.a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px 5%;
+    transform-origin: 50% 50%;
+    margin-bottom: 2px;
+    color: #8ad0bd;
+    background: #084594;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: sans-serif;
+}
+
+h2, h3 {
+    font-family: sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: #2e3641;
+    margin: 25px 50px;
+
+}
+
+.list-vertical {
+    width: 65%;
+    margin: 15px 3%;
+}
+
+.a:hover {
+    color: #172774;
+    background: #A2D2FF;
+    transform: scale(1.4) translate(15px, 0) perspective(700px) rotateY(30deg);
+    box-shadow: 0 3px 5px 0 rgba(33, 33, 33, 0.2), -4px 0 5px 0 rgba(33, 33, 33, 0.3), 0 0 0 1px rgba(33, 33, 33, 0.4), inset -5px 0 5px 0 rgba(33, 33, 33, 0.5);
+}
+
+.a:active {
+    transform: scale(1.3) translate(10px, 0) rotateY(27deg);
+}
+
+nav ul{height:500px; width:18%;}
+nav ul{overflow:hidden; overflow-y:scroll;}

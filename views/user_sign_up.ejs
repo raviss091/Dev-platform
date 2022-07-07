@@ -1,0 +1,55 @@
+<!-- <h1>Sign Up</h1>
+
+<form action="/users/create" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="submit" value="Sign Up">
+
+</form>
+
+<p>
+    <a href="/users/auth/google">Google Sign In/Sign Up</a>
+</p> -->
+
+
+
+<head>
+    <link rel="stylesheet" href="/css/user_sign_up.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form action="/users/create" method="POST">
+
+        <h3>Sign up Here</h3>
+
+        <input class="input1" type="text" name="name" placeholder="Userame" required/>
+
+        <input class="input1" type="email" name="email" placeholder="Email" required/>
+
+        <input class="input1" type="password" name="password" placeholder="Password" required/>
+
+        <input class="input1" type="password" name="confirm_password" placeholder="Confirm Password" required/>
+
+        <input class="button" type="submit" value="Sign Up">
+
+        <div class="social">
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="su"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/users/sign-in">Sign In</a> </div>
+        </div>
+
+    </form>
+
+</body>
+
+

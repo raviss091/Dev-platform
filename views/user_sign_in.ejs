@@ -1,0 +1,47 @@
+<!-- <h1>Sign In</h1>
+
+<form action="/users/create-session" method="POST">
+    <input type="email" name="email" placeholder="Email"  required>
+    <input type="password" name="password" placeholder="Password"  required>
+    <input type="submit" value="Sign In">
+
+</form>
+
+<p>
+    <a href="/users/auth/google">Google Sign In/Sign Up</a>
+</p> -->
+
+<head>
+    <link rel="stylesheet" href="/css/user_sign_in.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form action="/users/create-session" method="POST" >
+
+        <h3>Login Here</h3>
+
+        <label for="username">Username</label>
+        <input class="input1" type="email" name="email" placeholder="email" />
+
+        <label for="password">Password</label>
+        <input class="input1" type="password" name="password" placeholder="password" />
+
+        <input class="button" type="submit" value="Sign in">
+        
+        <div class="social">
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="su"><i class="fas fa-user-plus"></i><a href="/users/sign-up">Sign Up</a> </div>
+        </div>
+        
+    </form>
+       
+</body>

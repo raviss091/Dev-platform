@@ -1,0 +1,6 @@
+<h3>Search results for your query</h3>
+<% for(u of search_user){%>
+    <p>
+        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+    </p>
+<% } %>

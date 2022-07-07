@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CoDeveloper Connect</title>
+
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/chat_box.css">
+
+    </head>
+
+    <body>
+        
+        <!-- <header id="nav-wrapper">
+            <nav id="nav">
+                <div class="nav left">
+                    <span class="gradient skew">
+                        <h1 class="logo un-skew"><a href="/">CoDeveloper Connect</a></h1>
+                    </span>
+                    <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                </div>
+        
+                <div class="nav right">
+                    <% if (locals.user){ %>
+        
+                        <a href="#home" class="nav-link active header_a"><span class="nav-link-span"><span
+                                    class="u-nav">Home</span></span></a>
+        
+                        <a href="#about" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">About</span></span></a>
+        
+                        <a href="#contact" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">Contact</span></span></a>
+        
+                        <a href="/users/profile/<%= user.id %>" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">
+                                    <%= user.name %>
+                                </span></span></a>
+        
+                        <a href="/users/sign-out" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                    Out</span></span></a>
+        
+                        <% }else{ %>
+        
+                            <a href="#home" class="nav-link active header_a"><span class="nav-link-span"><span
+                                        class="u-nav">Home</span></span></a>
+        
+                            <a href="#about" class="nav-link header_a"><span class="nav-link-span"><span
+                                        class="u-nav">About</span></span></a>
+        
+                            <a href="#contact" class="nav-link header_a"><span class="nav-link-span"><span
+                                        class="u-nav">Contact</span></span></a>
+        
+                            <a href="/users/sign-in" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                        In</span></span></a>
+        
+                            <a href="/users/sign-up" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                        Up</span></span></a>
+        
+                            <% } %>
+                </div>
+            </nav>
+        
+        </header> -->
+
+        <main class="main">
+
+            <section id="home">
+
+                <div class="container"> 
+
+                    <!-- <div class="toppane">
+                                            <h1>
+                                                top pane
+                                                <%= title %>
+                                            </h1>
+                                        </div> -->
+                
+                    <!-- <div class="leftpane">
+                        <h1>left pane</h1>
+                    </div> -->
+                    
+                    
+
+                    <div class="middlepane">
+                        
+                        <!--search bar for posts-->
+                        <div style="margin-top: 50px;">
+                            <form class="example" action="/search/posts" method="post">
+
+                                <input type="text" placeholder="Find Posts ... " name="search_post">
+                                <button type="submit" ><i class="fa fa-search"></i></button>
+                                
+                            </form>
+                        </div>
+                        
+
+                        <% if(locals.user){ %>
+
+                            <div class="left-container">
+
+                                <div id="feed-posts" class="container1">
+
+                                    <div class="side bar">
+
+                                    </div>
+
+                                    <div class="newPostContent">
+
+                                            <h1 class="h1">Add New Post</h1>
+                                            <form action="/posts/create" id="new-post-form" method="POST">
+
+                                                <input type="text" name="title" placeholder="Enter title here" required id="post-title" class="text"
+                                                style="border-radius: 25px;">
+
+                                                <!-- <textarea name="title" cols="10" rows="3" placeholder="enter title" required></textarea> -->
+
+                                                <div class="format-bar bar">
+                                                    
+                                                </div>
+
+                                                <textarea name="content"  required class="post-body textarea" ></textarea>
+
+                                                <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" class="guide" target="_blank">Markdown Guide</a>
+
+                                                <input type="submit" class="btn1 a1" value="Post"></input>
+
+                                                <!-- <input type="submit" value="Post"> -->
+                                            </form>
+
+                                     </div>
+
+                                </div>
+
+                            </div>
+                                        
+                        <% } %>
+
+                        <!-- <section id="feed-posts">
+                            <h1 class="h1">Posts</h1>
+                            <% if(locals.user){ %>
+                                <form action="/posts/create" id="new-post-form" method="POST">
+                                    <textarea name="title" cols="10" rows="3" placeholder="enter title" required></textarea>
+                                    <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
+                                    <input type="submit" value="Post">
+                                </form>
+                            <% } %>
+                
+                                    
+                        </section> -->
+
+                        <div id="posts-list-container">
+                            <h1 class="h1">Posts</h1>
+                            <ul>
+                                <% for(post of posts){ %>
+    
+                                    <%- include('_post') -%>
+    
+                                <%} %>
+                            </ul>
+                        </div>
+                
+                    </div>
+
+                    <div class="rightpane">
+                
+                        <section id="search-users">
+                            <%- include('_search_user') %>
+                        </section>
+                
+                        <section id="user-friends">
+                            <h3>Teammates</h3>
+                
+                            
+                
+                                <nav>
+                                    <ul class="list list-vertical" class="scrollable">
+                                        <% for(u of all_users){%>
+                                        <li style="list-style-type: none;">
+                                            <a class="a" href="/users/profile/<%= u.id %>">
+                                                <%= u.name %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                    </ul>
+                                </nav>
+                
+                            
+                
+                        </section>
+
+                        <section>
+                            <!--chatting page-->
+                            <p>
+                                <a href="/chatter/chatbox">chat with others</a>
+                            </p>
+
+                            <!--article page-->
+                            <p>
+                                <a href="/lol">Article</a>
+                            </p>
+
+                        </section>
+                
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- importing this script for creating the comments -->
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous">
+            </script> -->
+        <script src="/js/header.js"></script>
+        <script src="/js/home_post_comments.js" ></script>
+        <script src="/js/home_posts.js"></script>
+
+        <!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+        <script src="js/toggle_likes.js"></script>
+        <script>
+            $('.toggle-like-button').each(function(){
+                let self = this;
+                let toggleLike = new ToggleLike(self);
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+        <script src="/js/chat_engine.js"></script>
+        
+
+    </body>
+
+</html>
+

@@ -1,0 +1,257 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="/css/chat_app_helper.css">
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+body{
+  background: #f2f2f2;
+  font-family: 'Comfortaa', cursive;
+  background-image: url('/images/background.jpg') ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* background-repeat: no-repeat; */
+
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid #ffa142;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 20px;
+  color: #ffa142;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 60px;
+  height: 36px;
+  border: 1px solid #ffa142;
+  background: #ffa142;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.container{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+  li{cursor: pointer;}
+  .chat{position: relative; width:30%; margin: 10px;border: outset;overflow-wrap: break-word;
+    background-color: lightgreen;
+  }
+
+  .chatcont{
+    margin:10px;
+  }
+  #chats{width: 100%; margin-top: 20px; display: -webkit-inline-box;}
+ .btnclose{ position: absolute;right: 10px;}
+  .chats input{width: 70%}
+
+  .box:before
+{
+    border-color: #bbb rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 8px 8px 0;
+    bottom: -8px;
+    content: "";
+    display: block;
+    left: 20px;
+    position: absolute;
+    width: 0;
+}
+.box:after {
+    border-color: #FFFFFF rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 6px 6px 0;
+    bottom: -6px;
+    content: "";
+    display: block;
+    left: 22px;
+    position: absolute;
+    width: 0;
+}
+.box {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px dashed #bbb;
+    border-radius: 5px;
+    margin:0 auto;
+    padding: 25px 10px;
+    position: relative;
+    width:200px;
+}
+#usrlist{
+  padding-top: 100px;
+
+}
+
+</style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script> 
+
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<body>
+  <!-- <input id="nick" type="text" />
+ -->
+  <!-- <button id="log" onclick="log()">Login</button> -->
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- <div class="container">
+     <div class="search"> -->
+        <!-- <input id="nick" type="hidden" value="<%=user.name%>" style="color:#ffa142; font-family:'Comfortaa', curive;" class="searchTerm" placeholder="Search Here">
+        <button id="log" onclick="log()">Start Chat</button>
+     </div>
+  </div>  -->
+
+  <!-- 
+    instead of taking input directly we are keeping data in js function through ejs tag. function will automatically load when typed 
+    window.onload=log 
+  -->
+
+
+  <div id="usrlist" ></div>
+  <div id="chats"></div>
+</body>
+
+  <script>
+      var userlistdiv=$('#usrlist');
+      var chatdiv=$('#chats');
+    
+     var socket=io();
+     evts();
+
+     function evts () {
+
+      socket.on('evt', function  (data) {
+        console.log(data);
+      })
+
+      socket.on('userlist', function  (arrayusers) {
+        if (nick!='') {
+        updatelist(arrayusers);
+        }
+      })
+
+      // socket.on('sendmsg', function  (data) {
+      //   console.log(data);
+      //   var chat=$('#'+data.usr).prev();
+      //    console.log(chat);
+      //    data.usr=data.usr.bold()
+      //    chat.append(data.usr+' : '+data.msg+'<br>');
+      // })
+
+      
+      socket.on('sendmsg', function  (data) {
+        console.log(data);
+        var chat=$('#'+data.usr).prev();
+         console.log(chat);
+         data.usr=data.usr.bold()
+         chat.append('<div class="talk-bubble tri-right left-top"><div class="talktext"><p>'
+          +data.msg+
+          '</p> </div> </div>'+'<br>');
+      })
+
+      socket.on('discon', function  (data) {
+        if (nick!='') {
+          data.list.splice( data.list.indexOf(data), 1 );
+          updatelist(data.list);
+
+          if ($('#'+data.usr).length!=0) {
+            //do something when a user you were chatting disconnect
+          }
+    }
+
+      })
+      socket.on('openchat', function  (user) {
+        if ($('#'+user).length==0) {
+        chatdiv.append('<div class="chat">'+ user +'<button class="btnclose" onClick="closechat(\'' + user + '\')">Close</button><hr><div class="chatcont"></div><input id="'+user+'" type="text"/><button onClick="sendmsg(\'' + user + '\')">Send</button></div>');
+      }
+      })
+
+     }
+
+     var nick='';
+
+     function updatelist (arrayusers) {
+         arrayusers.splice( arrayusers.indexOf(nick), 1 );
+
+       userlistdiv.empty();
+       userlistdiv.append('CLICK AN USER TO START A CHAT');
+        for (var i = arrayusers.length - 1; i >= 0; i--) {
+          
+         userlistdiv.append('<li onClick="start(\'' + arrayusers[i] + '\')">'+arrayusers[i] + '</li>');
+       
+         }
+     }
+     function log() {
+          //  nick= document.getElementById('nick').value;
+          nick="<%=user.name%>"
+          console.log(nick)
+          socket.emit('login',nick);
+          $('#nick').hide();
+          $('#log').hide();
+
+    }
+    window.onload=log
+    // function sendmsg(user) {
+    //   var msg=document.getElementById(user).value;
+    //      socket.emit('send', {usr:user, msg:msg});
+    //      console.log(document.getElementById(user))
+    //      var chat=$('#'+user).prev();
+    //      console.log(chat);
+    //      chat.append('<b>You </b>'+': '+msg+'<br>');
+
+
+    // }
+    function sendmsg(user) {
+      var msg=document.getElementById(user).value;
+         socket.emit('send', {usr:user, msg:msg});
+         console.log(document.getElementById(user))
+         var chat=$('#'+user).prev();
+         console.log(chat);
+         chat.append('<div class="talk-bubble tri-right btm-right"><div class="talktext"><p>'+
+         msg+
+         '</p> </div> </div>'+'<br>');
+
+
+    }
+
+    function closechat(user) {
+      console.log('close');
+      console.log($('#'+user));
+     $('#'+user).parent().remove();
+    }
+
+     function start(user) {
+      if ($('#'+user).length==0) {
+        socket.emit('startchat',user);
+        chatdiv.append('<div class="chat">'+ user +'<button class="btnclose" onClick="closechat(\'' + user + '\')">Close</button><hr><div class="chatcont"></div><input id="'+user+'" type="text"/><button onClick="sendmsg(\'' + user + '\')">Send</button></div>');
+      }
+    }
+
+
+  </script>
+</html> 
+
+

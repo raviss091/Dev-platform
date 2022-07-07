@@ -1,0 +1,41 @@
+{
+  "name": "mini_project_v1",
+  "version": "1.0.0",
+  "description": "web application for developers",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "social"
+  ],
+  "author": "Team4",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.4",
+    "crypto": "^1.0.1",
+    "dompurify": "^2.3.6",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.15.6",
+    "jsdom": "^19.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "kue": "^0.11.6",
+    "marked": "^4.0.12",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.6",
+    "multer": "^1.4.1",
+    "node-sass-middleware": "^0.11.0",
+    "nodemailer": "^6.2.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "slugify": "^1.6.5",
+    "socket.io": "^2.2.0"
+  }
+}

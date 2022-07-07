@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="/css/user_profile.css">
+
+
+<section class="profile">
+    <header class="header">
+
+        <div class="details">
+
+            <img src="<%= profile_user.avatar %>" 
+            onerror="this.onerror=null;
+            this.src='/images/default_profile_img.jpg';" 
+            class="profile-pic">
+
+            <% if(user.id == profile_user.id){ %>
+            <!-- if user matches then show the form -->
+            <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+
+                <div class="file-input">
+
+                    <label>Select profile image <input class="heading file" type="file" name="avatar" placeholder="Profile Picture"></label>
+
+                </div>
+
+                <div class="stats">
+
+                    <div class="col-4">
+
+                        <input class="clean-slide" id="name" type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
+                        <label for="name">name</label>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <input type="submit"  value="Update">
+
+                    </div>
+
+                </div>
+                
+            </form>
+    
+            <%}else{%>    
+                <!-- else show only the profile info -->
+                <div class="stats">
+
+                    <div class="col-4">
+
+                        <p><%= profile_user.name %></p>
+
+                    </div>
+
+                    <div class="col-4">
+
+                        <p><%= profile_user.email %></p>
+
+                    </div>
+
+                </div>
+                
+            <%} %>
+
+        </div>
+
+    </header>
+
+</section>
+
+
+
+
+
+

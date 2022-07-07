@@ -1,0 +1,101 @@
+<!-- <header id="layout-header">
+    <nav>
+        <div class="mini-logo">
+            <p>
+                <a href='/'>
+                    
+                </a>
+            </p>
+        </div>
+    
+        <div class="auth-links">
+            <ul>
+                <% if (locals.user){ %>
+                <li>
+                    <a href="/users/profile/<%=user.id%>">
+                        <%= user.name %></a>
+                </li>
+                <li>
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <% }else{ %>
+                <li>
+                    <a href="/users/sign-in">Sign In</a>
+                </li>
+                <li>
+                    <a href="/users/sign-up">Sign Up</a>
+                </li>
+        
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+ 
+
+
+</header> -->
+
+
+<header id="nav-wrapper">
+            <nav id="nav">
+                <div class="nav left">
+                    <span class="gradient skew">
+                        <h1 class="logo un-skew"><a href="/">CoDeveloper Connect</a></h1>
+                    </span>
+                    <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                </div>
+        
+                <div class="nav right">
+
+                    <% if (locals.user){ %>
+        
+                        <a href="#home" class="nav-link active header_a"><span class="nav-link-span"><span
+                                    class="u-nav">Home</span></span></a>
+
+
+                        <a href="/chatter/chatbox" class="nav-link header_a"><span class="nav-link-span"><span
+                            class="u-nav">Private Chat</span></span></a>
+
+
+                            <a href="#home" class="nav-link header_a"><span class="nav-link-span"><span
+                                class="u-nav">Connect live</span></span></a>
+
+                        <a href="#about" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">About</span></span></a>
+        
+                        <a href="#contact" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">Contact</span></span></a>
+        
+                        <a href="/users/profile/<%= user.id %>" class="nav-link header_a"><span class="nav-link-span"><span
+                                    class="u-nav">
+                                    <%= user.name %>
+                                </span></span></a>
+        
+                        <a href="/users/sign-out" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                    Out</span></span></a>
+        
+                        <% }else{ %>
+        
+                            <a href="#home" class="nav-link active header_a"><span class="nav-link-span"><span
+                                        class="u-nav">Home</span></span></a>
+        
+                            <a href="#about" class="nav-link header_a"><span class="nav-link-span"><span
+                                        class="u-nav">About</span></span></a>
+        
+                            <a href="#contact" class="nav-link header_a"><span class="nav-link-span"><span
+                                        class="u-nav">Contact</span></span></a>
+        
+                            <a href="/users/sign-in" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                        In</span></span></a>
+        
+                            <a href="/users/sign-up" class="nav-link header_a"><span class="nav-link-span"><span class="u-nav">Sign
+                                        Up</span></span></a>
+        
+                            <% } %>
+
+                            <a href="/lol" class="nav-link header_a"><span class="nav-link-span"><span
+                                class="u-nav">Articles</span></span></a>
+                </div>
+            </nav>
+        
+        </header>
